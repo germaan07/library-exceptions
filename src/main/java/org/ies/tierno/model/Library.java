@@ -42,10 +42,10 @@ public class Library {
     }
 
     public Partner findPartner(String nif) throws MemberNotFoundException {
-        if (existPartner(nif)){
-            return partnersByNif.get(nif);
-        }
-        throw new MemberNotFoundException(nif);
+        var part = partnersByNif.get(nif);
+        if (part == null){
+            throw new MemberNotFoundException(nif);
+        } return part;
     }
 
     public boolean partnerLendBook(String isbn, String nif){
